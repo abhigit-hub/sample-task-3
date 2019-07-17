@@ -1,14 +1,5 @@
-# sample-task-2
-A sample app to show post list with heterogeneous elements. Built with Kotlin, MVVM, RxJava, Dagger2, Architecture Components, Unit Tests etc. (Interview Test)
-App also supports data persistency for offline use case. 
-
-## Topics
-- [Glimpse](#glimpse)
-
+# sample-task-3
+A sample app to show pizza selection with nested Recycler View also having restrictions on the combination which comes from the API. Built with Kotlin, MVVM, RxJava, Dagger2, Architecture Components, Unit Tests etc. (Interview Test)
 
 ## Glimpse
-##### 1. **Internet Connection - ON**  
-![](https://imgur.com/9ZgQhLH.gif)
-
-##### 2. **Internet Connection - OFF**
-![](https://imgur.com/s3oUjLX.gif)
+![](https://imgur.com/xsXz3qv.gif)
