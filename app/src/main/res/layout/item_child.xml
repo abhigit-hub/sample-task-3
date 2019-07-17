@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.sampletask3.ui.main.home.details.ChildViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onSelected()}"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/l_grey"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_instock"
+            app:layout_constraintVertical_bias="0.0"
+            app:strokeColor="@{safeUnbox(viewModel.isSelected) ? @color/green1 : @color/translucent_white}"
+            app:strokeWidth="2dp">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/variation_card"
+                bind:viewModel="@{viewModel}" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textview_price"
+            style="@style/AppTheme.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/green"
+            android:visibility="@{safeUnbox(viewModel.price > 0) ? View.VISIBLE: View.GONE}"
+            app:formatPrice="@{viewModel.price}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/child"
+            tools:text="$100" />
+
+        <TextView
+            android:id="@+id/textview_instock"
+            style="@style/AppTheme.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:formatCombinationAlert="@{viewModel.getIsCombinationValid()}"
+            app:formatStockCount="@{viewModel.getStockCount()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/in_stock"
+            tools:textColor="@color/dark_green" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
